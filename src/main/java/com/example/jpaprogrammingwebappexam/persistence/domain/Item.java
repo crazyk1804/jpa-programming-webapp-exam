@@ -70,4 +70,8 @@ public abstract class Item {
 	public void setCategories(List<Category> categories) {
 		this.categories = categories;
 	}
+
+	public String getType() {
+		return this.getClass().getAnnotation(DiscriminatorValue.class).value();
+	}
 }

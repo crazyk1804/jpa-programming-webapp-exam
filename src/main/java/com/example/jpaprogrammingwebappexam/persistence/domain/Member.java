@@ -1,6 +1,7 @@
 package com.example.jpaprogrammingwebappexam.persistence.domain;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -12,7 +13,7 @@ public class Member {
 	@Embedded
 	private Address address;
 	@OneToMany(mappedBy = "member")
-	private List<Order> orders;
+	private List<Order> orders = new ArrayList<>();
 
 	public Long getId() {
 		return id;

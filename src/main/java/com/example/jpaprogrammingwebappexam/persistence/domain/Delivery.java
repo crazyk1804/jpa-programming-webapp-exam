@@ -15,6 +15,12 @@ public class Delivery {
 	@OneToOne(mappedBy = "delivery")
 	private Order order;
 
+	public Delivery() {}
+
+	public Delivery(Address address) {
+		this.address = address.clone();
+	}
+
 	public Long getId() {
 		return id;
 	}

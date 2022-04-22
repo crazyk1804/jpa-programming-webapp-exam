@@ -16,9 +16,23 @@ public class OrderItem {
 	@JoinColumn(name = "ITEM_ID")
 	private Item item;
 
+	public static OrderItem createOrderItem(Item item, int orderPrice, int itemCount) {
+		OrderItem orderItem = new OrderItem();
+		orderItem.setItem(item);
+		orderItem.setOrderPrice(orderPrice);
+		orderItem.setCount(itemCount);
+		item.removeStock(itemCount);
+		return orderItem;
+	}
+
 	public void cancel() {
-		if(order==null) return;
-		order.getOrderItems().remove(this);
+//		if(order==null) return;
+//		order.getOrderItems().remove(this);
+		item.addStock(count);
+	}
+
+	public int getTotalPrice() {
+		return getOrderPrice() * count;
 	}
 
 	public Long getId() {

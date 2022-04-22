@@ -32,9 +32,7 @@ public class Order {
 		Order order = new Order();
 		order.setMember(member);
 		order.setDelivery(delivery);
-		Arrays.asList(orderItems).forEach(orderItem -> {
-			order.addOrderItem(orderItem);
-		});
+		Arrays.asList(orderItems).forEach(order::addOrderItem);
 		order.setStatus(OrderStatus.ORDER);
 		order.setOrderDate(new Date());
 		return order;
@@ -49,8 +47,16 @@ public class Order {
 		orderItems.forEach(OrderItem::cancel);
 	}
 
+	public int getTotalPrice() {
+		int totalPrice = 0;
+		for(OrderItem orderItem : orderItems)
+			totalPrice += orderItem.getTotalPrice();
+
+		return totalPrice;
+	}
+
 	public void addOrderItem(OrderItem orderItem) {
-		if(!orderItems.contains(orderItem)) return;
+		orderItems.remove(orderItem);
 		orderItems.add(orderItem);
 	}
 

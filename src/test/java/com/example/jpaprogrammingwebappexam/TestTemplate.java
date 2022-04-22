@@ -22,7 +22,7 @@ public class TestTemplate {
 		this.currentTestInfo = testInfo;
 	}
 
-	protected void _(TestJob job) {
+	protected void __(TestJob job) {
 		try {
 			System.out.println("========================================================================");
 			System.out.println(this.currentTestInfo.getDisplayName() + " BEGIN");
